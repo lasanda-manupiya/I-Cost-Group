@@ -1,22 +1,20 @@
 # I-Cost Group Static Website
 
-This project is split into multiple HTML pages while keeping the original visual design, fonts, and theme from the initial single-file version.
+This repository is now organized as a simple multi-page static site, suitable for shared hosting platforms like HestiaCP.
 
-## Pages
+## Structure
 
-- `index.html` — hero/home
-- `about.html` — about section
-- `companies.html` — companies + comparison section
-- `sectors.html` — sectors section
-- `contact.html` — contact CTA section
+- `index.html` — home page
+- `about.html` — about page
+- `companies.html` — operating companies page
+- `sectors.html` — sectors page
+- `contact.html` — contact page
+- `assets/css/main.css` — shared styles
+- `assets/js/main.js` — shared JavaScript (mobile menu and footer year)
 
-## Shared assets
+## Hestia hosting upload
 
-- `assets/css/main.css` — original CSS moved out of inline `<style>`
-- `assets/js/main.js` — original JavaScript moved out of inline `<script>`
-
-## Hosting on Hestia
-
-1. Upload the entire repository contents to your site document root.
-2. Keep the `assets/` folder structure unchanged.
-3. Ensure `index.html` is at the document root.
+1. Create your domain/web root in Hestia.
+2. Upload all files while keeping the same structure.
+3. Ensure `index.html` is in the document root.
+4. (Optional) Replace placeholder contact details in `contact.html`.

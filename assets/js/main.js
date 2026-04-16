@@ -1,58 +1,17 @@
-// Custom cursor
-const cursor = document.querySelector('.cursor');
-const cursorRing = document.querySelector('.cursor-ring');
+(() => {
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const year = document.getElementById('year');
 
-document.addEventListener('mousemove', (e) => {
-  if (cursor && cursorRing) {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-    cursorRing.style.left = e.clientX + 'px';
-    cursorRing.style.top = e.clientY + 'px';
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.classList.toggle('open');
+    });
   }
-});
 
-// Nav scroll state
-const nav = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
+  if (year) {
+    year.textContent = new Date().getFullYear();
   }
-});
-
-// Mobile menu toggle
-const hamburger = document.querySelector('.hamburger');
-const mobileMenu = document.querySelector('.mobile-menu');
-
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  mobileMenu.classList.toggle('open');
-});
-
-// Close mobile menu when link clicked
-mobileMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    mobileMenu.classList.remove('open');
-  });
-});
-
-// Scroll reveal
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll('.reveal').forEach(el => {
-  observer.observe(el);
-});
+})();
